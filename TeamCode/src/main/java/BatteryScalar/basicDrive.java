@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @TeleOp
 @Config
 public class basicDrive extends LinearOpMode {
-    public static double timedTime;
+    public static double timedTime = 3;
     DcMotor leftFrontMotor;
     DcMotor leftBackMotor;
     DcMotor rightFrontMotor;
