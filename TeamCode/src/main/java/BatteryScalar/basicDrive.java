@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @TeleOp
 @Config
 public class basicDrive extends LinearOpMode {
-    public static double timedTime = 3;
+    public static double timedTime = 2;
     DcMotor leftFrontMotor;
     DcMotor leftBackMotor;
     DcMotor rightFrontMotor;
@@ -30,14 +30,22 @@ public class basicDrive extends LinearOpMode {
         rightFrontMotor.setDirection(DcMotorSimple.Direction.REVERSE);
         rightBackMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
+
         waitForStart();
+        timer.reset();
 
         if (isStopRequested()) return;
 
         while (opModeIsActive()){
-            while(timer.seconds() < timedTime){
-                drive(1,0,0);
+            if(timer.seconds() < timedTime){
+                drive(0.3,0,0);
+            } else {
+                drive(0,0,0);
             }
+            telemetry.addData("time:", timer.seconds());
+            telemetry.addData("timedTime:", timedTime);
+
+            telemetry.update();
         }
     }
 
